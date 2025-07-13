@@ -8,12 +8,16 @@
  
 </head>
 <body>
+  
   <nav>
     <h1>Theodoros Tsiolakis</h1>
-    <a href="#about">Σχετικά</a>
-    <a href="#projects">Έργα</a>
-    <a href="#contact">Επικοινωνία</a>
+    <ul>
+      <li><a href="#about" class="active">Σχετικά</a></li>
+      <li><a href="#projects">Έργα</a></li>
+      <li><a href="#contact">Επικοινωνία</a></li>
+    </ul>
   </nav>
+  <div class="hero"></div>
   <main>
     <section id="about">
       <h2>Σχετικά</h2>
@@ -49,6 +53,28 @@
       © 2025 Theodoros Tsiolakis
     </footer>
   </main>
+  <script>
+    // Scroll spy + active class
+    const links = document.querySelectorAll('nav ul li a');
+    const sections = document.querySelectorAll('main section');
+    function activateLink() {
+      let index = sections.length;
+      while(--index && window.scrollY + 60 < sections[index].offsetTop) {}
+      links.forEach(link => link.classList.remove('active'));
+      links[index].classList.add('active');
+    }
+    activateLink();
+    window.addEventListener('scroll', activateLink);
+
+    // Smooth scroll
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href'))
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
 
