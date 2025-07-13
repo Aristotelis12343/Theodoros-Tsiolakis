@@ -1,4 +1,4 @@
- /* Βασικό reset */
+  /* Βασικό reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background-color: #111;
@@ -50,6 +50,7 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
+    /* Κάρτες έργων */
     .project-card {
       background-color: #1a1a1a;
       padding: 1rem;
@@ -68,6 +69,13 @@
       font-size: 0.95rem;
       line-height: 1.4;
     }
+    /* Στυλ για τους συνδέσμους των καρτών */
+    .project-grid a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -79,21 +87,19 @@
     /* Mobile adjustments */
     @media (max-width: 768px) {
       body {
-        flex-direction: column;      /* από row σε column layout */
+        flex-direction: column;
       }
-
       nav {
-        width: 100%;                 /* sidebar γίνεται full-width header */
+        width: 100%;
         padding: 1rem;
-        flex-direction: row;         /* links δίπλα-δίπλα */
+        flex-direction: row;
         justify-content: space-around;
       }
       nav a {
-        margin: 0 0.5rem;            /* οριζόντιο κενό για να μην κολλάνε */
+        margin: 0 0.5rem;
         font-size: 1rem;
       }
-
       main {
-        padding: 1.5rem;             /* λιγότερο padding */
+        padding: 1.5rem;
       }
     }
