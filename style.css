@@ -1,4 +1,4 @@
-  /* Βασικό reset */
+ /* Βασικό reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background-color: #111;
@@ -30,6 +30,7 @@
     nav a:hover {
       color: #68c0ff;
     }
+
     /* Κύριο περιεχόμενο */
     main {
       flex: 1;
@@ -76,23 +77,23 @@
     }
 
     /* Mobile adjustments */
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;      /* από row σε column layout */
-  }
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;      /* από row σε column layout */
+      }
 
-  nav {
-    width: 100%;                 /* sidebar γίνεται full-width header */
-    padding: 1rem;
-    flex-direction: row;         /* links δίπλα-δίπλα */
-    justify-content: space-around;
-  }
-  nav a {
-    margin: 0;                   /* μικρότερα κενά */
-    font-size: 1rem;
-  }
+      nav {
+        width: 100%;                 /* sidebar γίνεται full-width header */
+        padding: 1rem;
+        flex-direction: row;         /* links δίπλα-δίπλα */
+        justify-content: space-around;
+      }
+      nav a {
+        margin: 0 0.5rem;            /* οριζόντιο κενό για να μην κολλάνε */
+        font-size: 1rem;
+      }
 
-  main {
-    padding: 1.5rem;             /* λιγότερο padding στο κύριο περιεχόμενο */
-  }
-}
+      main {
+        padding: 1.5rem;             /* λιγότερο padding */
+      }
+    }
