@@ -74,3 +74,25 @@
       font-size: 0.9rem;
       color: #777;
     }
+
+    /* Mobile adjustments */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;      /* από row σε column layout */
+  }
+
+  nav {
+    width: 100%;                 /* sidebar γίνεται full-width header */
+    padding: 1rem;
+    flex-direction: row;         /* links δίπλα-δίπλα */
+    justify-content: space-around;
+  }
+  nav a {
+    margin: 0;                   /* μικρότερα κενά */
+    font-size: 1rem;
+  }
+
+  main {
+    padding: 1.5rem;             /* λιγότερο padding στο κύριο περιεχόμενο */
+  }
+}
