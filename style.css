@@ -1,0 +1,76 @@
+  /* Βασικό reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Πλευρικό μενού */
+    nav {
+      width: 250px;
+      background-color: #1e1e1e;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #68c0ff;
+    }
+    /* Κύριο περιεχόμενο */
+    main {
+      flex: 1;
+      padding: 3rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
