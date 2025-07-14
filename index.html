@@ -8,14 +8,16 @@
  
 </head>
 <body>
-  
+  <!-- Navigation -->
   <nav>
     <h1>Theodoros Tsiolakis</h1>
-    <ul>
+    <ul class="nav-links">
       <li><a href="#about" class="active">Σχετικά</a></li>
       <li><a href="#projects">Έργα</a></li>
       <li><a href="#contact">Επικοινωνία</a></li>
     </ul>
+    <button class="theme-toggle" aria-label="Toggle theme"></button>
+    
   </nav>
   <div class="hero"></div>
   <main>
@@ -26,54 +28,45 @@
     <section id="projects">
       <h2>Έργα</h2>
       <div class="project-grid">
-        <a href="project1.html">
-          <div class="project-card">
-            <h3>Project 1</h3>
-            <p>Περιγραφή του πρώτου project με λίγες γραμμές</p>
-          </div>
-        </a>
-        <a href="project2.html">
-          <div class="project-card">
-            <h3>Project 2</h3>
-            <p>Περιγραφή του δεύτερου project με λίγες γραμμές.</p>
-          </div>
-        </a>
-        <!-- Για να προσθέσεις κι άλλα έργα, κάνε το ίδιο:
-        <a href="project3.html">
-          <div class="project-card">…</div>
-        </a>
-        -->
+        <a href="project1.html"><div class="project-card"><h3>Project 1</h3><p>Περιγραφή...</p></div></a>
+        <a href="project2.html"><div class="project-card"><h3>Project 2</h3><p>Περιγραφή...</p></div></a>
       </div>
     </section>
     <section id="contact">
       <h2>Επικοινωνία</h2>
       <p>Μπορείτε να με βρείτε στο <a href="mailto:teo.tsiolakis@gmail.com?">teo.tsiolakis@gmail.com</a>.</p>
     </section>
-    <footer>
-      © 2025 Theodoros Tsiolakis
-    </footer>
+    <footer>© 2025 Theodoros Tsiolakis</footer>
   </main>
+
   <script>
-    // Scroll spy + active class
-    const links = document.querySelectorAll('nav ul li a');
+    // Θέτει αρχικό θέμα από localStorage ή προτιμήσεις χρήστη
+    const currentTheme = localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    // Toggle button
+    const toggleBtn = document.querySelector('.theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    });
+
+    // Scroll spy + smooth scroll
+    const links = document.querySelectorAll('nav .nav-links a');
     const sections = document.querySelectorAll('main section');
     function activateLink() {
-      let index = sections.length;
-      while(--index && window.scrollY + 60 < sections[index].offsetTop) {}
-      links.forEach(link => link.classList.remove('active'));
-      links[index].classList.add('active');
+      let idx = sections.length;
+      while (--idx && window.scrollY + 60 < sections[idx].offsetTop) {}
+      links.forEach(l => l.classList.remove('active'));
+      links[idx].classList.add('active');
     }
-    activateLink();
-    window.addEventListener('scroll', activateLink);
-
-    // Smooth scroll
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href'))
-          .scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+    activateLink(); window.addEventListener('scroll', activateLink);
+    links.forEach(link => link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    }));
   </script>
 </body>
 </html>
