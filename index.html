@@ -8,6 +8,7 @@
  
 </head>
 <body>
+  
   <nav>
     <h1>Theodoros Tsiolakis</h1>
     <button class="menu-toggle" aria-label="Toggle menu">☰</button>
@@ -25,13 +26,15 @@
   <main>
     <section id="about">
       <h2>Σχετικά</h2>
-      <p>Είμαι προγραμματιστής Front-End με πάθος για σύγχρονο design και clean κώδικα.</p>
+      <p>Εδω μπαινει βιογραφικο...</p>
     </section>
     <section id="projects">
       <h2>Έργα</h2>
       <div class="project-grid">
         <a href="project1.html"><div class="project-card"><h3>Project 1</h3><p>Περιγραφή...</p></div></a>
         <a href="project2.html"><div class="project-card"><h3>Project 2</h3><p>Περιγραφή...</p></div></a>
+        <a href="project3.html"><div class="project-card"><h3>Project 3</h3><p>Περιγραφή...</p></div></a>
+        <a href="project4.html"><div class="project-card"><h3>Project 4</h3><p>Περιγραφή...</p></div></a>
       </div>
     </section>
     <section id="contact">
@@ -63,7 +66,7 @@
     function activateLink() {
       let idx = sections.length;
       while (--idx && window.scrollY + 60 < sections[idx].offsetTop) {}
-      links.forEach(l => l.classList.remove('active')); 
+      links.forEach(l => l.classList.remove('active'));
       links[idx].classList.add('active');
     }
     activateLink(); window.addEventListener('scroll', activateLink);

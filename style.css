@@ -1,4 +1,4 @@
- /* ΘΕΜΑ: Light/Dark με CSS Variables */
+/* ΘΕΜΑ: Light/Dark με CSS Variables */
     :root {
       --bg-color: #111;
       --text-color: #eee;
@@ -69,12 +69,8 @@
     [data-theme="light"] .theme-toggle .icon-sun { opacity: 0; }
     [data-theme="light"] .theme-toggle .icon-moon { opacity: 1; }
     /* Mobile menu button */
-    .menu-toggle {
-      display: none;
-      background: none; border: none;
-      color: var(--text-color);
-      font-size: 1.5rem; cursor: pointer;
-    }
+    .menu-toggle { display: none; background: none; border: none;
+      color: var(--text-color); font-size: 1.5rem; cursor: pointer; }
     /* Main content */
     main { flex: 1; padding: 3rem; }
     section { margin-bottom: 3rem; }
@@ -82,8 +78,10 @@
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 0.5rem; transition: border-color 0.3s;
     }
-    .project-grid { display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .project-grid {
+      display: grid;
+      /* Όριο σε 2 στήλες πάντα */
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     .project-card { background: var(--card-bg);
@@ -101,13 +99,19 @@
     }
     /* Mobile styles */
     @media (max-width: 768px) {
+      /* Show menu button */
       .menu-toggle { display: block; }
+      /* Dropdown menu for nav links */
       ul.nav-links { display: none; flex-direction: column;
         position: absolute; top: 60px; right: 2rem;
         background: var(--nav-bg); padding: 1rem;
         border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       }
       ul.nav-links.open { display: flex; }
+      /* Ensure only one column of projects on mobile */
+      .project-grid {
+        grid-template-columns: 1fr !important;
+      }
       nav h1 { order: 1; }
       .menu-toggle { order: 2; }
       .theme-toggle { order: 3; }
