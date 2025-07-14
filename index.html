@@ -8,15 +8,14 @@
  
 </head>
 <body>
-  
   <nav>
     <h1>Theodoros Tsiolakis</h1>
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
     <ul class="nav-links">
       <li><a href="#about" class="active">Σχετικά</a></li>
       <li><a href="#projects">Έργα</a></li>
       <li><a href="#contact">Επικοινωνία</a></li>
     </ul>
-    <!-- Button with sun/moon icons -->
     <button class="theme-toggle" aria-label="Toggle theme">
       <span class="icon-sun">☀︎</span>
       <span class="icon-moon">☾</span>
@@ -37,7 +36,7 @@
     </section>
     <section id="contact">
       <h2>Επικοινωνία</h2>
-      <p>Μπορείτε να με βρείτε στο <a href="mailto:teo.tsiolakis@gmail.com?">teo.tsiolakis@gmail.com</a></p>
+      <p>Μπορείτε να με βρείτε στο <a href="mailto:teo.tsiolakis@gmail.com">teo.tsiolakis@gmail.com</a></p>
     </section>
     <footer>© 2025 Theodoros Tsiolakis</footer>
   </main>
@@ -52,27 +51,27 @@
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
     });
+    // Menu toggle for mobile
+    const menuBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
     // Scroll spy & smooth scroll
     const links = document.querySelectorAll('nav .nav-links a');
     const sections = document.querySelectorAll('main section');
     function activateLink() {
       let idx = sections.length;
       while (--idx && window.scrollY + 60 < sections[idx].offsetTop) {}
-      links.forEach(l => l.classList.remove('active'));
+      links.forEach(l => l.classList.remove('active')); 
       links[idx].classList.add('active');
     }
     activateLink(); window.addEventListener('scroll', activateLink);
     links.forEach(link => link.addEventListener('click', e => {
       e.preventDefault();
       document.querySelector(link.hash).scrollIntoView({ behavior: 'smooth' });
+      navLinks.classList.remove('open');
     }));
-    console.log(
-    'data-theme is:', 
-    document.documentElement.getAttribute('data-theme'),
-    '— icon-sun color var is:', 
-    getComputedStyle(document.documentElement)
-      .getPropertyValue('--icon-sun-color')
-  );
   </script>
 </body>
 </html>
