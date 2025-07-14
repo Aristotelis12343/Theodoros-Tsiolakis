@@ -8,7 +8,7 @@
  
 </head>
 <body>
-  <!-- Navigation -->
+  
   <nav>
     <h1>Theodoros Tsiolakis</h1>
     <ul class="nav-links">
@@ -16,8 +16,11 @@
       <li><a href="#projects">Έργα</a></li>
       <li><a href="#contact">Επικοινωνία</a></li>
     </ul>
-    <button class="theme-toggle" aria-label="Toggle theme"></button>
-    
+    <!-- Button with sun/moon icons -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <span class="icon-sun">☾</span>
+      <span class="icon-moon">☀︎</span>
+    </button>
   </nav>
   <div class="hero"></div>
   <main>
@@ -34,26 +37,22 @@
     </section>
     <section id="contact">
       <h2>Επικοινωνία</h2>
-      <p>Μπορείτε να με βρείτε στο <a href="mailto:teo.tsiolakis@gmail.com?">teo.tsiolakis@gmail.com</a>.</p>
+      <p>Μπορείτε να με βρείτε στο <a href="mailto:teo.tsiolakis@gmail.com?subject=Επικοινωνία%20από%20Το%20Όνομά%20Μου&body=Γεια%20σου">teo...</a>.</p>
     </section>
     <footer>© 2025 Theodoros Tsiolakis</footer>
   </main>
-
   <script>
-    // Θέτει αρχικό θέμα από localStorage ή προτιμήσεις χρήστη
-    const currentTheme = localStorage.getItem('theme') ||
+    // Initial theme
+    const current = localStorage.getItem('theme') ||
       (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    // Toggle button
-    const toggleBtn = document.querySelector('.theme-toggle');
-    toggleBtn.addEventListener('click', () => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', current);
+    // Toggle theme
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
     });
-
-    // Scroll spy + smooth scroll
+    // Scroll spy & smooth scroll
     const links = document.querySelectorAll('nav .nav-links a');
     const sections = document.querySelectorAll('main section');
     function activateLink() {
@@ -65,7 +64,7 @@
     activateLink(); window.addEventListener('scroll', activateLink);
     links.forEach(link => link.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      document.querySelector(link.hash).scrollIntoView({ behavior: 'smooth' });
     }));
   </script>
 </body>
