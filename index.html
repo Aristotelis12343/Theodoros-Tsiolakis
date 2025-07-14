@@ -66,6 +66,13 @@
       e.preventDefault();
       document.querySelector(link.hash).scrollIntoView({ behavior: 'smooth' });
     }));
+    console.log(
+    'data-theme is:', 
+    document.documentElement.getAttribute('data-theme'),
+    '— icon-sun color var is:', 
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--icon-sun-color')
+  );
   </script>
 </body>
 </html>
